@@ -1,0 +1,83 @@
+:root{
+    -o-animation-time:10000ms;
+    --beginWidth:50vw;
+    --endWidth:20vw;
+    --randomColor:darkred;
+}
+
+body{
+    background:linear-gradient(skyblue,silver);
+    background-attachment: fixed;
+}
+
+.score{
+    color:white;
+    text-shadow: 2px 2px #000;
+    text-align: center;
+    animation: fadeIn 3000ms infinite reverse ease-in-out;
+}
+
+body::selection,.score::selection,#play-again-button::selection{
+    color:none;
+    background:none;
+}
+
+.ufo{
+    display:inline-block;
+    width:160px;
+    height:50px;
+    background-color: var(--randomColor);
+    border-radius: 50%;
+    animation:flying var(--animation-time) infinite reverse;
+    position: absolute;
+    border: 1px solid #777;
+    box-shadow: 2px 2px 2px #333;
+}
+
+.ufo:hover{
+    cursor:crosshair;
+    border:1px solid white;
+}
+
+.ufo::before{
+    width:55px;
+    height:55px;
+    background:linear-gradient(#fff, #ccc);
+    border-radius: 50%;
+    margin-top:-30px;
+    margin-left:54px;
+    position:fixed;
+    content: " ";
+}
+
+#play-again-button {
+    position: fixed;
+    margin-top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background-color: navy;
+    font-size: 75px;
+    text-align: center;
+    border-radius: 2em;
+}
+
+@keyframes fadeIn{
+    0%, 100%{
+        opacity: .75;
+    }
+    50%{
+        opacity:1;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes flying{
+    0%, 100%{
+        transform: translate(var(--beginWidth), 50px) scale(.7);
+    }
+    50%{
+        transform: translate(var(--endWidth), 85vh);
+    }
+}
